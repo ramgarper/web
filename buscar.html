@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>Buscar Barco</title>
+</head>
+<body>
+    <h1>Buscar características del barco</h1>
+    <form method="POST">
+        Nombre del barco: <input type="text" name="nombre" required>
+        <input type="submit" value="Buscar">
+    </form> 
+    {% if foto_barco %}
+    <img src="{{ url_for('static', filename=foto_barco) }}" alt="Foto de {{ caracteristicas['nombreDelBarco'] }}"    width="300">
+    {% endif %}
+    {% if caracteristicas %}
+        <h2>Características:</h2>
+        <ul>
+            <li>Tamaño: {{ caracteristicas['Tamaño'] }}</li>
+            <li>Altillos: {{ caracteristicas['altillos'] }}</li>
+            <li>Puente/Chimenea: {{ caracteristicas['puente/chimenea'] }}</li>
+            <li>Picos: {{ caracteristicas['picos'] }}</li>
+            <li>Pasa el puente: {{ caracteristicas['pasaElPuente'] }}</li>
+            <li>Tochos: {{ caracteristicas['tochos'] }}</li>
+            <li>Gap: {{ caracteristicas['gap'] }}</li>
+            <li>Cautivos: {{ caracteristicas['cautivos'] }}</li>
+            <li>Recoger material: {{ caracteristicas['recogerMaterial'] }}</li>
+        </ul>
+    {% elif caracteristicas is not none %}
+        <p>No se encontró el barco.</p>
+    {% endif %}
+</body>
+</html>
